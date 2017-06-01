@@ -1,0 +1,126 @@
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="main.js"></script>
+</head>
+<body>
+    <center>
+        <h2>Hit-the-Dot</h2></center>
+    <center>Test your skill. How many boxes can you check in 30 seconds?</center>
+    <form id="cpanel">
+        <center>
+            <table cellspacing=3>
+                <tr>
+                    <td><input type="button" name="startstop" value=" Start Game | Stop Game " onClick="play()"></td>
+                    <td><pre>    </pre></td>
+                    <td align=right>Time:</td>
+                    <td><input type="text" id="timeleft" size="4" onFocus="this.blur()"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="state" size="20" value="Push Start to Play" onFocus="this.blur()"></td>
+                    <td><pre>    </pre></td>
+                    <td align=right>Score:</td>
+                    <td><input type="text" name="score" size="4" onFocus="this.blur()"></td>
+                </tr>
+            </table>
+        </center>
+    </form>
+    <form name="dmz">
+        <center>
+            <table cellspacing=3>
+                <tr>
+                    <td colspan=10>
+                        <hr size=1>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="center"><input type="radio" value="0"></td>
+                    <td align="center" valign="center"><input type="radio" value="1"></td>
+                    <td align="center" valign="center"><input type="radio" value="2"></td>
+                    <td align="center" valign="center"><input type="radio" value="3"></td>
+                    <td align="center" valign="center"><input type="radio" value="4"></td>
+                    <td align="center" valign="center"><input type="radio" value="5"></td>
+                    <td align="center" valign="center"><input type="radio" value="6"></td>
+                    <td align="center" valign="center"><input type="radio" value="7"></td>
+                    <td align="center" valign="center"><input type="radio" value="8"></td>
+                    <td align="center" valign="center"><input type="radio" value="9"></td>
+                </tr>
+                <tr>
+                    <td align="center" valign="center"><input type="radio" value="10"></td>
+                    <td align="center" valign="center"><input type="radio" value="11"></td>
+                    <td align="center" valign="center"><input type="radio" value="12"></td>
+                    <td align="center" valign="center"><input type="radio" value="13"></td>
+                    <td align="center" valign="center"><input type="radio" value="14"></td>
+                    <td align="center" valign="center"><input type="radio" value="15"></td>
+                    <td align="center" valign="center"><input type="radio" value="16"></td>
+                    <td align="center" valign="center"><input type="radio" value="17"></td>
+                    <td align="center" valign="center"><input type="radio" value="18"></td>
+                    <td align="center" valign="center"><input type="radio" value="19"></td>
+                </tr>
+                <tr>
+                    <td align="center" valign="center"><input type="radio" value="20"></td>
+                    <td align="center" valign="center"><input type="radio" value="21"></td>
+                    <td align="center" valign="center"><input type="radio" value="22"></td>
+                    <td align="center" valign="center"><input type="radio" value="23"></td>
+                    <td align="center" valign="center"><input type="radio" value="24"></td>
+                    <td align="center" valign="center"><input type="radio" value="25"></td>
+                    <td align="center" valign="center"><input type="radio" value="26"></td>
+                    <td align="center" valign="center"><input type="radio" value="27"></td>
+                    <td align="center" valign="center"><input type="radio" value="28"></td>
+                    <td align="center" valign="center"><input type="radio" value="29"></td>
+                </tr>
+                <tr>
+                    <td align="center" valign="center"><input type="radio" value="30"></td>
+                    <td align="center" valign="center"><input type="radio" value="31"></td>
+                    <td align="center" valign="center"><input type="radio" value="32"></td>
+                    <td align="center" valign="center"><input type="radio" value="33"></td>
+                    <td align="center" valign="center"><input type="radio" value="34"></td>
+                    <td align="center" valign="center"><input type="radio" value="35"></td>
+                    <td align="center" valign="center"><input type="radio" value="36"></td>
+                    <td align="center" valign="center"><input type="radio" value="37"></td>
+                    <td align="center" valign="center"><input type="radio" value="38"></td>
+                    <td align="center" valign="center"><input type="radio" value="39"></td>
+                </tr>
+                <tr>
+                    <td align="center" valign="center"><input type="radio" value="40"></td>
+                    <td align="center" valign="center"><input type="radio" value="41"></td>
+                    <td align="center" valign="center"><input type="radio" value="42"></td>
+                    <td align="center" valign="center"><input type="radio" value="43"></td>
+                    <td align="center" valign="center"><input type="radio" value="44"></td>
+                    <td align="center" valign="center"><input type="radio" value="45"></td>
+                    <td align="center" valign="center"><input type="radio" value="46"></td>
+                    <td align="center" valign="center"><input type="radio" value="47"></td>
+                    <td align="center" valign="center"><input type="radio" value="48"></td>
+                    <td align="center" valign="center"><input type="radio" value="49"></td>
+                </tr>
+                <tr>
+                    <td align="center" valign="center"><input type="radio" value="50"></td>
+                    <td align="center" valign="center"><input type="radio" value="51"></td>
+                    <td align="center" valign="center"><input type="radio" value="52"></td>
+                    <td align="center" valign="center"><input type="radio" value="53"></td>
+                    <td align="center" valign="center"><input type="radio" value="54"></td>
+                    <td align="center" valign="center"><input type="radio" value="55"></td>
+                    <td align="center" valign="center"><input type="radio" value="56"></td>
+                    <td align="center" valign="center"><input type="radio" value="57"></td>
+                    <td align="center" valign="center"><input type="radio" value="58"></td>
+                    <td align="center" valign="center"><input type="radio" value="59"></td>
+                </tr>
+                <tr>
+                    <td colspan=10>
+                        <hr size=1>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </form>
+
+    <center>
+        <table cellspacing=3>
+            <tr>
+                <td><code>
+  <p><strong>Instructions:</strong>
+  <ol><li>Click on the radio buttons as<BR>
+  they are selected randomly by the computer.<BR>
+  <li>1 point per hit, minus 1 point per miss.<BR>
+  </ol></td></tr></table>
+</center>
+</body>
