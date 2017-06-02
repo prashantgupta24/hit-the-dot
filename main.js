@@ -24,7 +24,6 @@ $(function(){
       }
     }
   });
-  console.log(radios.length);
 });
 
 var play = function(){
@@ -43,26 +42,6 @@ var play = function(){
   else {
     resetPlay();
   }
-
-  //var radios = $("form").find("tr").find("input").filter(":radio");
-  //$( "input[type=checkbox]" ).on( "click", countChecked );
-  //var radios = $("form input:radio");
-  //radios[4].prop("checked", true);
-
-//  console.log(radios);
-
-   //var radio = radios[4];
-  // console.log(radio);
-  // radio.attr("checked", true);
-// var i=0;
-//   radios.each(function(){
-//     if(i==4){
-//       $(this).prop('checked', true);
-//     }
-//     i++;
-//   })
-
-
 }
 
 var decTime = function(time){
@@ -76,13 +55,8 @@ var decTime = function(time){
 var placehead = function(){
   random = Math.floor(Math.random() * radios.length);
   //console.log(random);
-  var i=0;
-    radios.each(function(){
-      if(i==random){
-        $(this).prop('checked', true);
-      }
-      i++;
-    })
+  radios.eq(random).prop('checked', true);
+  d
 }
 
 var resetPlay = function(){
