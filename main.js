@@ -1,70 +1,67 @@
-var playing = false;
-var defaultGameLength = 5;
-var setIntFunction;
-var radios;
-var random;
+let playing = false;
+let defaultGameLength = 5;
+let setIntFunction;
+let radios;
+let random;
 
-$(function(){
-  console.log('ready');
-  radios = $("form input:radio").on("click", function(){
-    if(!playing) {
-      $(this).prop("checked", false);
-    } else{
-      var head = $(this).val();
+$(function() {
+  //console.log('ready');
+  radios = $('form input:radio').on('click', function() {
+    if (!playing) {
+      $(this).prop('checked', false);
+    } else {
+      let head = $(this).val();
       //console.log(head);
-      var score = $("#score").val() != 0 ? $("#score").val():0;
-      if(head==random){
-        $("#score").val(++score);
-        $(this).prop("checked", false);
+      let score = $('#score').val() != 0 ? $('#score').val() : 0;
+      if (head == random) {
+        $('#score').val(++score);
+        $(this).prop('checked', false);
         placehead();
-      }
-      else {
-        $("#score").val(--score);
-        $(this).prop("checked", false);
+      } else {
+        $('#score').val(--score);
+        $(this).prop('checked', false);
       }
     }
   });
 });
 
-var play = function(){
-  playing = playing? false:true;
-  console.log("playing " + playing);
-  if(playing){
-    var time = defaultGameLength;
-    $("#score").val(0);
+let play = function() {
+  playing = playing ? false : true;
+  //console.log('playing ' + playing);
+  if (playing) {
+    let time = defaultGameLength;
+    $('#score').val(0);
     decTime(time--);
-    setIntFunction = setInterval(function(){
-      decTime(time--)
+    setIntFunction = setInterval(function() {
+      decTime(time--);
     }, 1000);
 
     placehead();
-  }
-  else {
+  } else {
     resetPlay();
   }
-}
+};
 
-var decTime = function(time){
+let decTime = function(time) {
   //console.log('decreasing time starting with ' + time);
-  if(time == 0) {
-      resetPlay();
+  if (time == 0) {
+    resetPlay();
   }
-  $("#timeleft").val(time);
-}
+  $('#timeleft').val(time);
+};
 
-var placehead = function(){
+let placehead = function() {
   random = Math.floor(Math.random() * radios.length);
   //console.log(random);
   radios.eq(random).prop('checked', true);
-  d
-}
+};
 
-var resetPlay = function(){
-  alert("Your score was " + $("#score").val());
+let resetPlay = function() {
+  alert('Your score was ' + $('#score').val());
   clearInterval(setIntFunction);
   playing = false;
-  radios.each(function(){
-      $(this).prop('checked', false);
+  radios.each(function() {
+    $(this).prop('checked', false);
   });
-   $("#timeleft").val('');
-}
+  $('#timeleft').val('');
+};
