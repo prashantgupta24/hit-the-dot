@@ -9,6 +9,14 @@ $(function() {
     play();
   });
 
+  $('#dmz').on('click', function () {
+    //console.log('clicked!!');
+    if(playing) {
+      let score = $('#score').val() != 0 ? $('#score').val() : 0;
+      $('#score').val(--score);
+    }
+  });
+
   let radios = $('form input:radio').on('click', function() {
     if (!playing) {
       $(this).prop('checked', false);
@@ -17,10 +25,12 @@ $(function() {
       //console.log(head);
       let score = $('#score').val() != 0 ? $('#score').val() : 0;
       if (head == random) {
+        event.stopPropagation();
         $('#score').val(++score);
         $(this).prop('checked', false);
         placehead();
       } else {
+        event.stopPropagation();
         $('#score').val(--score);
         $(this).prop('checked', false);
       }
