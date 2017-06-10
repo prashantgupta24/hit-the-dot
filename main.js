@@ -1,34 +1,32 @@
 $(function() {
   //console.log('ready');
-  let playing = false;
-  let defaultGameLength = 5;
-  let setIntFunction;
-  let random;
+  let hitTheDot = hitTheDotGame;
+  hitTheDot.radios = $('form input:radio'),
 
   $('#startstop').on('click', function () {
-    play();
+    hitTheDot.play();
   });
 
   $('#dmz').on('click', function () {
-    //console.log('clicked!!');
-    if(playing) {
+    if(hitTheDot.playing) {
       let score = $('#score').val() != 0 ? $('#score').val() : 0;
       $('#score').val(--score);
     }
   });
 
-  let radios = $('form input:radio').on('click', function() {
-    if (!playing) {
+  hitTheDot.radios.on('click', function() {
+    //console.log($(this).val());
+    if (!hitTheDot.playing) {
       $(this).prop('checked', false);
     } else {
       let head = $(this).val();
       //console.log(head);
       let score = $('#score').val() != 0 ? $('#score').val() : 0;
-      if (head == random) {
+      if (head == hitTheDot.randomBox) {
         event.stopPropagation();
         $('#score').val(++score);
         $(this).prop('checked', false);
-        placehead();
+        hitTheDot.placehead();
       } else {
         event.stopPropagation();
         $('#score').val(--score);
@@ -36,45 +34,49 @@ $(function() {
       }
     }
   });
+});
 
-  let play = function() {
-    playing = playing ? false : true;
-    //console.log('playing ' + playing);
-    if (playing) {
-      let time = defaultGameLength;
+let hitTheDotGame = {
+  playing: false,
+  defaultGameLength: 5,
+  randomBox: 0,
+  setIntFunction: function (){},
+  play: function() {
+    this.playing = this.playing ? false : true;
+    //console.log('playing ' + this.playing);
+    if (this.playing) {
       $('#score').val(0);
-      decTime(time--);
-      setIntFunction = setInterval(function() {
-        decTime(time--);
-      }, 1000);
-
-      placehead();
+      this.startTimer();
+      this.placehead();
     } else {
-      resetPlay();
+      this.resetPlay();
     }
-  };
-
-  let decTime = function(time) {
-    //console.log('decreasing time starting with ' + time);
-    if (time == 0) {
-      resetPlay();
-    }
-    $('#timeleft').val(time);
-  };
-
-  let placehead = function() {
-    random = Math.floor(Math.random() * radios.length);
-    //console.log(radios);
-    radios.eq(random).prop('checked', true);
-  };
-
-  let resetPlay = function() {
+  },
+  placehead: function() {
+    this.randomBox = Math.floor(Math.random() * this.radios.length);
+    this.radios.eq(this.randomBox).prop('checked', true);
+  },
+  startTimer: function () {
+    let time = this.defaultGameLength;
+    this.decTime(time--);
+    this.setIntFunction = setInterval(function() {
+      hitTheDotGame.decTime(time--);
+    }, 1000);
+  },
+  resetPlay: function() {
     alert('Your score was ' + $('#score').val());
-    clearInterval(setIntFunction);
-    playing = false;
-    radios.each(function() {
+    clearInterval(this.setIntFunction);
+    this.playing = false;
+    this.radios.each(function() {
       $(this).prop('checked', false);
     });
     $('#timeleft').val('');
-  };
-});
+  },
+  decTime: function(time) {
+    //console.log('decreasing time starting with ' + time);
+    if (time == 0) {
+      this.resetPlay();
+    }
+    $('#timeleft').val(time);
+  }
+};
